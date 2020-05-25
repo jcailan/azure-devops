@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "creator": "edmx2csn 1.0.21"
+  },
+  "$version": "0.2",
+  "definitions": {
+    "OData.svc.Products": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        }, 
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "Description": {
+          "type": "cds.LargeString"
+        },
+        "ReleaseDate": {
+          "type": "cds.Timestamp"
+        },
+        "DiscontinuedDate": {
+          "type": "cds.Timestamp"
+        },
+        "Rating": {
+          "type": "cds.Integer"
+        },
+        "Price": {
+          "type": "cds.Double"
+        },
+        "Categories": {
+          "type": "cds.Association",
+          "target": "OData.svc.Categories",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "Supplier": {
+          "type": "cds.Association",
+          "target": "OData.svc.Suppliers",
+          "cardinality": {
+            "max": 1
+          }
+        },
+        "ProductDetail": {
+          "type": "cds.Association",
+          "target": "OData.svc.ProductDetails",
+          "cardinality": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "OData.svc.FeaturedProduct": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "includes": [
+        "OData.svc.Products"
+      ],
+      "elements": {
+        "Advertisement": {
+          "type": "cds.Association",
+          "target": "OData.svc.Advertisements",
+          "cardinality": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "OData.svc.ProductDetails": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ProductID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Details": {
+          "type": "cds.LargeString"
+        },
+        "Product": {
+          "type": "cds.Association",
+          "target": "OData.svc.Products",
+          "cardinality": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "OData.svc.Categories": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "Products": {
+          "type": "cds.Association",
+          "target": "OData.svc.Products",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "OData.svc.Suppliers": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "Address": {
+          "type": "OData.svc.Address"
+        },
+        "Concurrency": {
+          "type": "cds.Integer"
+        },
+        "Products": {
+          "type": "cds.Association",
+          "target": "OData.svc.Products",
+          "cardinality": {
+            "max": "*"
+          }
+        }
+      }
+    },
+    "OData.svc.Persons": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "PersonDetail": {
+          "type": "cds.Association",
+          "target": "OData.svc.PersonDetails",
+          "cardinality": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "OData.svc.Customer": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "includes": [
+        "OData.svc.Persons"
+      ],
+      "elements": {
+        "TotalExpense": {
+          "type": "cds.DecimalFloat"
+        }
+      }
+    },
+    "OData.svc.Employee": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "includes": [
+        "OData.svc.Persons"
+      ],
+      "elements": {
+        "EmployeeID": {
+          "type": "cds.Integer64"
+        },
+        "HireDate": {
+          "type": "cds.Timestamp"
+        },
+        "Salary": {
+          "type": "cds.DecimalFloat"
+        }
+      }
+    },
+    "OData.svc.PersonDetails": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "PersonID": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "Age": {
+          "type": "cds.Integer"
+        },
+        "Gender": {
+          "type": "cds.Boolean"
+        },
+        "Phone": {
+          "type": "cds.LargeString"
+        },
+        "Address": {
+          "type": "OData.svc.Address"
+        },
+        "Person": {
+          "type": "cds.Association",
+          "target": "OData.svc.Persons",
+          "cardinality": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "OData.svc.Advertisements": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "Name": {
+          "type": "cds.LargeString"
+        },
+        "AirDate": {
+          "type": "cds.Timestamp"
+        },
+        "FeaturedProduct": {
+          "type": "cds.Association",
+          "target": "OData.svc.FeaturedProduct",
+          "cardinality": {
+            "max": 1
+          }
+        }
+      }
+    },
+    "OData.svc.Address": {
+      "kind": "type",
+      "elements": {
+        "Street": {
+          "type": "cds.LargeString"
+        },
+        "City": {
+          "type": "cds.LargeString"
+        },
+        "State": {
+          "type": "cds.LargeString"
+        },
+        "ZipCode": {
+          "type": "cds.LargeString"
+        },
+        "Country": {
+          "type": "cds.LargeString"
+        }
+      }
+    },
+    "OData.svc": {
+      "kind": "service"
+    }
+  }
+}

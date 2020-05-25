@@ -13,12 +13,15 @@
 	},
 	"cds": {
 		"requires": {
-			"NorthWind": {
+			"uaa": {
+				"kind": "xsuaa"
+			},
+			"OData.svc": {
 				"kind": "odata",
-				"model": "srv/external/NorthWind",
+				"model": "srv/external/OData.svc",
 				"credentials": {
-					"destination": "demo-destination",
-					"prefix": "Experimental/OData/OData.svc"
+					"destination": "NorthWind",
+					"prefix": "Experimental/OData"
 				}
 			}
 		}
