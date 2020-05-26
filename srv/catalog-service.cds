@@ -1,4 +1,4 @@
-using {OData.svc as external} from './external/OData.svc.csn';
+using {NorthWind as external} from './external/NorthWind.csn';
 
 service CatalogService {
 
