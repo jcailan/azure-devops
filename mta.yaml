@@ -42,6 +42,3 @@ resources:
      path: ./xs-security.json
      service: xsuaa
      service-plan: application  
-     config:
-       xsappname: demo-${space}
-       tenant-mode: dedicated

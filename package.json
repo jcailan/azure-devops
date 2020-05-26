@@ -20,7 +20,7 @@
 				"kind": "odata",
 				"model": "srv/external/OData.svc",
 				"credentials": {
-					"destination": "NorthWind",
+					"destination": "demo-destination",
 					"prefix": "Experimental/OData"
 				}
 			}
