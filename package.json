@@ -8,21 +8,46 @@
 		"@sap/cds": "^3",
 		"express": "^4"
 	},
+	"devDependencies": {
+		"mocha": "^5.1.1",
+		"chai": "^4.1.2",
+		"chai-http": "^4.0.0",
+		"mocha-junit-reporter": "^1.23.3",
+		"sqlite3": "^4.2.0"
+	},
 	"scripts": {
+		"test": "mocha tests/test.js --timeout 15000 --exit",
+		"test-azure": "mocha tests/*.js --reporter mocha-junit-reporter --reporter-options mochaFile=./report/test-results.xml --timeout 15000 --exit",
 		"start": "npx cds run"
 	},
 	"cds": {
 		"requires": {
 			"NorthWind": {
 				"kind": "odata",
-				"model": "srv/external/NorthWind",
-				"credentials": {
-					"destination": "NorthWind"
+				"model": "srv/external/NorthWind"
+			}
+		},
+		"[local]": {
+			"requires": {
+				"NorthWind": {
+					"kind": "odata",
+					"model": "srv/external/NorthWind",
+					"credentials": {
+						"url": "https://services.odata.org/Experimental/OData/OData.svc"
+					}
+				}
+			}
+		},
+		"[production]": {
+			"requires": {
+				"NorthWind": {
+					"kind": "odata",
+					"model": "srv/external/NorthWind",
+					"credentials": {
+						"destination": "NorthWind"
+					}
 				}
 			}
 		}
-	},
-	"devDependencies": {
-		"sqlite3": "^4.2.0"
 	}
 }
