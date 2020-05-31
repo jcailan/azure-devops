@@ -20,7 +20,8 @@
 	"scripts": {
 		"test": "mocha tests/test.js --timeout 15000 --exit",
 		"test-azure": "nyc --temp-dir=./report/raw --reporter=cobertura --report-dir=./report mocha tests/*.js --reporter mocha-junit-reporter --reporter-options mochaFile=./report/test-results.xml --timeout 15000 --exit",
-		"start": "npx cds run"
+		"start": "npx cds run",
+		"build": "mbt build"
 	},
 	"cds": {
 		"requires": {
