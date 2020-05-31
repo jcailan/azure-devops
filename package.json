@@ -5,6 +5,7 @@
 	"repository": "https://github.com/jcailan/azure-devops",
 	"license": "MIT",
 	"dependencies": {
+		"mbt": "^1.0.0",
 		"@sap/cds": "^3",
 		"express": "^4"
 	},

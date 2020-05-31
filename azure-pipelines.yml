@@ -34,3 +34,21 @@ steps:
   inputs:
     codeCoverageTool: cobertura
     summaryFileLocation: '**/cobertura-coverage.xml'
+
+- script: |
+    npm run build
+  displayName: 'Execute Build'
+
+- task: CopyFiles@2
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    SourceFolder: '$(agent.builddirectory)/s/mta_archives'
+    Contents: '*'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
