@@ -19,17 +19,9 @@
 		"requires": {
 			"NorthWind": {
 				"kind": "odata",
-				"model": "srv/external/NorthWind"
-			}
-		},
-		"[production]": {
-			"requires": {
-				"NorthWind": {
-					"kind": "odata",
-					"model": "srv/external/NorthWind",
-					"credentials": {
-						"destination": "NorthWind"
-					}
+				"model": "srv/external/NorthWind",
+				"--credentials": {
+					"destination": "NorthWind"
 				}
 			}
 		}
