@@ -30,7 +30,7 @@ steps:
     testResultsFiles: '**/test-results.xml'
 
 - task: PublishCodeCoverageResults@1
-  condition: and(eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
   inputs:
     codeCoverageTool: cobertura
     summaryFileLocation: '**/cobertura-coverage.xml'
