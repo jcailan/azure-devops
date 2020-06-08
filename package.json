@@ -10,18 +10,41 @@
 		"express": "^4"
 	},
 	"devDependencies": {
+		"chai": "^4.2.0",
+		"chai-http": "^4.3.0",
+		"mocha": "^7.2.0",
 		"sqlite3": "^4.2.0"
 	},
 	"scripts": {
+		"test": "mocha tests/test.js --timeout 15000 --exit",
 		"start": "npx cds run"
 	},
 	"cds": {
 		"requires": {
 			"NorthWind": {
 				"kind": "odata",
-				"model": "srv/external/NorthWind",
-				"--credentials": {
-					"destination": "NorthWind"
+				"model": "srv/external/NorthWind"
+			}
+		},
+		"[local]": {
+			"requires": {
+				"NorthWind": {
+					"kind": "odata",
+					"model": "srv/external/NorthWind",
+					"credentials": {
+						"url": "https://services.odata.org/Experimental/OData/OData.svc"
+					}
+				}
+			}
+		},
+		"[production]": {
+			"requires": {
+				"NorthWind": {
+					"kind": "odata",
+					"model": "srv/external/NorthWind",
+					"credentials": {
+						"destination": "NorthWind"
+					}
 				}
 			}
 		}
