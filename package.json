@@ -13,10 +13,12 @@
 		"chai": "^4.2.0",
 		"chai-http": "^4.3.0",
 		"mocha": "^7.2.0",
+		"mocha-junit-reporter": "^1.23.3",
 		"sqlite3": "^4.2.0"
 	},
 	"scripts": {
 		"test": "mocha tests/test.js --timeout 15000 --exit",
+		"test-azure": "mocha tests/*.js --reporter mocha-junit-reporter --reporter-options mochaFile=./report/test-results.xml --timeout 15000 --exit",
 		"start": "npx cds run"
 	},
 	"cds": {
