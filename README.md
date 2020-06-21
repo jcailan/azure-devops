@@ -5,4 +5,5 @@ This is a demo project about consuming external service using Application Router
 The details are documented in this blog post:
 [Consume External Service using Application Router](https://blogs.sap.com/2020/06/20/consume-external-service-using-application-router/)
 
-Go back to [main](https://github.com/jcailan/azure-devops) branch
+
+> [Go back to main branch](https://github.com/jcailan/azure-devops)
