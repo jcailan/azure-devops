@@ -1,0 +1,8 @@
+{
+	"authenticationMethod": "route",
+	"routes": [{
+		"source": "/Experimental/OData/OData.svc/(.*)",
+		"target": "$1",
+		"destination": "NorthWind"
+	}]
+}

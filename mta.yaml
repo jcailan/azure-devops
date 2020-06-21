@@ -1,0 +1,28 @@
+_schema-version: "3.1"
+ID: demo.approuter
+version: 0.0.1
+description: "Demo on consuming destination service via app router"
+parameters:
+  enable-parallel-deployments: true
+
+modules:
+  - name: demo-app-router
+    type: approuter.nodejs
+    path: app-router
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: demo-destination
+      - name: demo-uaa
+
+resources:
+  - name: demo-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+
+  - name: demo-destination
+    type: org.cloudfoundry.existing-service
