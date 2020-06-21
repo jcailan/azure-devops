@@ -6,4 +6,4 @@ The sample projects are arranged in different topics and are kept in different b
 
 ## Contents
 
-- [Consume Exeternal Service using Application Router](tree/cf-approuter-es)
+- [Consume External Service using Application Router](https://github.com/jcailan/azure-devops/tree/cf-approuter-es)
